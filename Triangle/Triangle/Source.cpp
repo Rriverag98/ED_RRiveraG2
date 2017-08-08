@@ -32,11 +32,10 @@ int AP::getA() {
 class T :public AP {
 private:
 	int r, b, alt, h, s, cs, t;
-	AP p;
-	AP a;
+
 public:
-	AP getP(void);
-	AP getA(void);
+	int getP(void);
+	int getA(void);
 	int getR(void);
 	int getB(void);
 	int getAlt(void);
@@ -44,8 +43,8 @@ public:
 	int getS(void);
 	int getCs(void);
 	int getT(void);
-	void setP(AP p);
-	void setA(AP a);
+	void setP(int p);
+	void setA(int a);
 	void setR(int r);
 	void setB(int b);
 	void setAlt(int alt);
@@ -53,14 +52,14 @@ public:
 	void setS(int s);
 	void setCs(int cs);
 	void setT(int t);
-	T(int rad, int base, int hip, int alt, int sen, int csen, int tan, AP per, AP area);
-	T(int rad, int base, int hip, int alt, int sen, int csen, int tan, AP per);
-	T(int rad, int base, int hip, int alt, int sen, int csen, int tan, AP area);
+	T(int rad, int base, int hip, int alt, int sen, int csen, int tan, int per, int area);
+	T(int rad, int base, int hip, int alt, int sen, int csen, int tan, int per);
+	T(int rad, int base, int hip, int alt, int sen, int csen, int tan, int area);
 	T(int rad, int base, int hip, int alt, int sen, int csen, int tan);
 	T();
 }
 
-T::T(int rad, int base, int hip, int alt, int sen, int csen, int tan, AP per, AP area)
+T::T(int rad, int base, int hip, int alt, int sen, int csen, int tan, int per, int area)
 {
 	r = rad;
 	b = base;
@@ -72,12 +71,12 @@ T::T(int rad, int base, int hip, int alt, int sen, int csen, int tan, AP per, AP
 	t = tan;
 }
 
-T::T(int rad, int base, int hip, int alt, int sen, int csen, int tan, AP per) {
+T::T(int rad, int base, int hip, int alt, int sen, int csen, int tan, int per) {
 	r = rad;
 	p = per;
 }
 
-T::T(int rad, int base, int hip, int alt, int sen, int csen, int tan, AP area) {
+T::T(int rad, int base, int hip, int alt, int sen, int csen, int tan, int area) {
 	r = rad;
 	a = area;
 }
@@ -91,21 +90,21 @@ T::T() {
 }
 
 
-void T::setP(AP per) {
+void T::setP(int per) {
 	p = per;
 
 }
 
-AP T::getP() {
+int T::getP() {
 	return p;
 }
 
-void T::setA(AP area) {
+void T::setA(int area) {
 	a = area;
 
 }
 
-AP T::getA() {
+int T::getA() {
 	return a;
 }
 
