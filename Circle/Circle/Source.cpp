@@ -32,43 +32,41 @@ int AP::getA() {
 class C :public AP {
 private:
 	int r;
-	AP p;
-	AP a;
 public:
-	AP getP(void);
-	AP getA(void);
+	int getP(void);
+	int getA(void);
 	int getR(void);
-	void setP(AP p);
-	void setA(AP a);
+	void setP(int p);
+	void setA(int a);
 	void setR(int r);
-	C(int rad, AP per, AP area);
-	C(int rad, AP per);
-	C(int rad, AP area);
-	C(AP per, AP area);
+	C(int rad, int per, int area);
+	C(int rad, int per);
+	C(int rad, int area);
+	C(int per, int area);
 	C(int rad);
-	C(AP per);
-	C(AP area);
+	C(int per);
+	C(int area);
 	C();
 }
 
-C::C(int rad, AP per, AP area)
+C::C(int rad, int per, int area)
 {
 	r = rad;
 	p = per;
 	a = area;
 }
 
-C::C(int rad, AP per) {
+C::C(int rad, int per) {
 	r = rad;
 	p = per;
 }
 
-C::C(int rad, AP area) {
+C::C(int rad, int area) {
 	r = rad;
 	a = area;
 }
 
-C::C(AP per, AP area) {
+C::C(int per, int area) {
 	p = per;
 	a = area;
 }
@@ -77,11 +75,11 @@ C::C(int rad) {
 	r = rad;
 }
 
-C::C(AP per) {
+C::C(int per) {
 	p = per;
 }
 
-C::C(AP area) {
+C::C(int area) {
 	a = area;
 }
 C::C() {
@@ -96,21 +94,21 @@ int C::getR() {
 	return r;
 }
 
-void C::setP(AP per) {
+void C::setP(int per) {
 	p = per;
 
 }
 
-AP C::getP() {
+int C::getP() {
 	return p;
 }
 
-void C::setA(AP area) {
+void C::setA(int area) {
 	a = area;
 
 }
 
-AP C::getA() {
+int C::getA() {
 	return a;
 }
 
