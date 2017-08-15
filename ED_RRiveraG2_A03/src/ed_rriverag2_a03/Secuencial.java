@@ -14,11 +14,11 @@ public class Secuencial extends FetchClass{
 
     
     int Fetch(int n) {
-        for (int i=0;i<vector.length;i++){
-            if (n==vector[i]){
-             return i;   
+        for (int i=0;i<vector.length;i++){ //recorre el arreglo pocision por pocision 
+            if (n==vector[i]){ //si n es igual al valor dentro del vector
+             return i; //regresa el valor dentro de esa pocision
             }
-        } return -1;
+        } return -1; //si no se encuentra el numero que busca, regresa -1
     }
 
     @Override
