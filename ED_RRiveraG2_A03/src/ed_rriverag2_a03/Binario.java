@@ -9,7 +9,7 @@ package ed_rriverag2_a03;
  *
  * @author Rodrigo
  */
-public class Binario extends FetchClass {
+public class Binario extends FetchClass implements Ordenamientos {
    
     
     int Fetch(int n) {
@@ -43,6 +43,21 @@ public class Binario extends FetchClass {
     @Override
     int Fetch() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
+    @Override
+    public void seleccion() {
+        for (int i = 0;i<vector.length;i++){
+            int menor = i;
+            for (int j =i+1;j<vector.length;j++){
+                if (vector[j]<vector[menor]){
+                    menor = j;
+                }
+            }
+            int auxiliar = vector[i];
+            vector[i]=vector[menor];
+            vector[menor]=auxiliar;
+        }
     }
     
 }
