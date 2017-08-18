@@ -34,6 +34,23 @@ class FetchClass {
     }
 }
 class binario: FetchClass{
+    
+     func sort() {
+    var m = 0
+    var temp = 0
+    for index in 0...vector.count-1{
+        m=index
+        for index2 in stride(from: index+1, to: vector.count-1, by: 1){
+            if(vector[index2]<vector[index]){
+                m=index2
+            }
+        }
+    temp=vector[index]
+    vector[index]=vector[m]
+    vector[m]=temp
+        }
+    }
+    
     override func fetch(n: Int) -> Int {
         var centro: Int = 0
         var inicio: Int = 0
@@ -68,3 +85,9 @@ var test: secuencial = secuencial()
 test.setV(v: test.randomV(n: 400))
 test.showV()
 test.showF(n: test.fetch(n: 50))
+
+var b: binario = binario()
+b.setV(v: b.randomV(n: 30))
+b.sort()
+b.showV()
+b.showF(n: b.fetch(n: 15))
