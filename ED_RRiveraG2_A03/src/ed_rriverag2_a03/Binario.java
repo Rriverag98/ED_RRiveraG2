@@ -160,7 +160,7 @@ public class Binario extends FetchClass implements Ordenamientos {
         {
             int pivot = (primero+ultimo)/2;
  
-            mergeSort(primero, ultimo);
+            mergeSort(primero, pivot);
             mergeSort(pivot+1, ultimo);
  
             merge(primero, pivot, ultimo);
