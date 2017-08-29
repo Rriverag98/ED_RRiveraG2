@@ -12,39 +12,32 @@ package ed_rriverag2_a03;
 public class Binario extends FetchClass implements Ordenamientos {
    
     
-    int Fetch(int n) {
-    int b = vector.length; //se usara b para asignarles un valor a inicio, final y centro
-    
-    int inicio;
-    int Final;
-    int centro;
-    
-    
-    int valorCentro;    //valorCentro se usara para revisar si el valor que busca ya lo encontro
-    inicio = 0; //0 es la posicion inicial del vector
-    Final = b-1; //se le resta 1 al length del vector ya que las posiciones en un vector empieza en 0,
-                 //por lo que la posicion final de un vector de 8 sera 7
-    while (inicio<Final){ //se hara el proceso unicamente si inicio es mayor a final, ya que si son iguales o final > inicio, el numero
-                          //no existe en el arreglo
-    centro = (inicio + Final)/2; //La pocision centro del arreglo es la mitad de la suma entre la pocision inicio y final
-    valorCentro = vector[centro]; //valorCentro toma el valor que esta en la pocision Centro
-    if (valorCentro==n){ //si valorCentro es igual al numero que busca
-        return n;        //regresa el numero que busca
+   int Fetch(int n) {
+    int b = vector.length;
+    int inicio,centro,fin;
+    int valorCentro;    
+    inicio = 0;
+    fin = b-1;
+    while (inicio<fin){
+    centro = (inicio + fin)/2;
+    valorCentro = vector[centro];
+    if (valorCentro==n){
+        return n;
     }
-    if (n<vector[centro]){ //si el numero que busca es menor al valor que se encuentra en la pocision centro
-        Final = valorCentro-1; //final tomara el valor de valorCentro menos 1
+    if (n<vector[centro]){
+        fin = centro-1;
     }
-     if (n>vector[centro]){ //si el numero que busca es mayor al valor que se encuentra en la pocision centro
-        inicio = valorCentro-1; //inicio tomara el valor de valorCentro menos 1
+     if (n>vector[centro]){
+        inicio = centro+1;
     }
-    } return -1; //si inicio es mayor a final el numero no existe en el arreglo, por lo que se regresa el numero -1
+    } return -1;
     }
 
     @Override
     int Fetch() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-   
+
     @Override
     public void seleccion() {
         for (int i = 0;i<vector.length;i++){
@@ -59,5 +52,121 @@ public class Binario extends FetchClass implements Ordenamientos {
             vector[menor]=auxiliar;
         }
     }
+
+    @Override
+    public void insertion() {
+       int temp;
+       int j;
+       for (int i=1;i<vector.length;i++){
+            temp = vector[i];
+            j = i-1;
+           while ((j>=0)&&(vector[j]>temp)){
+               vector[j+1]=vector[j];
+               j--;
+           }
+           vector[j+1] = temp;
+       }
+    }
+    
+    public void burbuja(){
+        for (int i = 1;i<vector.length;i++){
+            for (int j=0;j<vector.length-1;j++){
+                if (vector[j]>vector[j+1]){
+                    intercambio(i,j);
+                }
+            }
+        }
+    }
+    
+    public void intercambio(int i, int j){
+        int temp = vector[j];
+        vector[j] = vector[j+1];
+        vector[j+1] = temp;
+    }
+
+    @Override
+    public void quickSort(int primero, int ultimo) {
+        int i,j,pivot;
+        i = primero; j = ultimo;
+        pivot = vector[(i+j)/2];
+        while(vector[i]<pivot){
+            i++;
+        }
+        while(vector[j]>pivot){
+            j--;
+        }
+        if (i<=j){
+            intercambio(j,i);
+            i++; j--;
+        }
+        while (i<=j){
+            if (primero<j){
+                quickSort(primero,j);
+            }
+            if (ultimo>j){
+                quickSort(i,ultimo);
+            }
+        }
+    }
+    
+    public void merge(int primero, int pivot, int ultimo)
+    {
+        int n1 = pivot - primero + 1;
+        int n2 = ultimo - pivot;
+        
+        int L[] = new int [n1];
+        int R[] = new int [n2];
+
+        for (int i=0; i<n1; ++i)
+            L[i] = vector[primero + i];
+        for (int j=0; j<n2; ++j)
+            R[j] = vector[pivot + 1+ j];
+ 
+        int i = 0, j = 0;
+
+        int k = primero;
+        while (i < n1 && j < n2)
+        {
+            if (L[i] <= R[j])
+            {
+                vector[k] = L[i];
+                i++;
+            }
+            else
+            {
+                vector[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+        while (i < n1)
+        {
+            vector[k] = L[i];
+            i++;
+            k++;
+        }
+        while (j < n2)
+        {
+            vector[k] = R[j];
+            j++;
+            k++;
+        }
+    }
+
+   @Override
+    public void mergeSort( int primero, int ultimo)
+    {
+        if (primero < ultimo)
+        {
+            int pivot = (primero+ultimo)/2;
+ 
+            mergeSort(primero, ultimo);
+            mergeSort(pivot+1, ultimo);
+ 
+            merge(primero, pivot, ultimo);
+        }
+    }
+  
+      
     
 }
