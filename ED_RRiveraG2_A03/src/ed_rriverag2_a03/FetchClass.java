@@ -42,7 +42,7 @@ public abstract class FetchClass {
         if (r == -1){
             System.out.println("El numero que busca no existe en el vector");
         } else {
-        System.out.println(r);
+        System.out.println("El numero se encuentra en la posicion numero: "+(r+1));
         }
     }    
 }
