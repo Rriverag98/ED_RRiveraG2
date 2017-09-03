@@ -22,7 +22,7 @@ public class Binario extends FetchClass implements Ordenamientos {
     centro = (inicio + fin)/2;
     valorCentro = vector[centro];
     if (valorCentro==n){
-        return n;
+        return centro;
     }
     if (n<vector[centro]){
         fin = centro-1;
@@ -72,7 +72,7 @@ public class Binario extends FetchClass implements Ordenamientos {
         for (int i = 1;i<vector.length;i++){
             for (int j=0;j<vector.length-1;j++){
                 if (vector[j]>vector[j+1]){
-                    intercambio(i,j);
+                    intercambio(j+1,j);
                 }
             }
         }
@@ -80,8 +80,8 @@ public class Binario extends FetchClass implements Ordenamientos {
     
     public void intercambio(int i, int j){
         int temp = vector[j];
-        vector[j] = vector[j+1];
-        vector[j+1] = temp;
+        vector[j] = vector[i];
+        vector[i] = temp;
     }
 
     @Override
@@ -89,6 +89,7 @@ public class Binario extends FetchClass implements Ordenamientos {
         int i,j,pivot;
         i = primero; j = ultimo;
         pivot = vector[(i+j)/2];
+        do{
         while(vector[i]<pivot){
             i++;
         }
@@ -99,15 +100,15 @@ public class Binario extends FetchClass implements Ordenamientos {
             intercambio(j,i);
             i++; j--;
         }
-        while (i<=j){
+        } while (i<=j);
             if (primero<j){
                 quickSort(primero,j);
             }
-            if (ultimo>j){
+            if (i<ultimo){
                 quickSort(i,ultimo);
             }
         }
-    }
+    
     
     public void merge(int primero, int pivot, int ultimo)
     {
