@@ -10,14 +10,14 @@ package ed_equiporojo_p01;
  *
  * @author Rodrigo
  */
-public class Pelicula <P> implements Comparable<Pelicula<P>> {
+public class Pelicula<P> implements Comparable<Pelicula<P>> {
 
     private String nombre;
     private int asistentes;
 
-    public Pelicula(String nombre,int asistentes) {
+
+    public Pelicula(String nombre) {
         this.nombre = nombre;
-        this.asistentes = asistentes;
     }
     
     public int getAsistentes() {
@@ -53,4 +53,6 @@ public class Pelicula <P> implements Comparable<Pelicula<P>> {
         return 0;
     }
     
+     
+     
 }
