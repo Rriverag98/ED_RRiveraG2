@@ -1,28 +1,30 @@
 package ed_equiporojo_p01;
 
-
-
 import java.util.ArrayList;
 import java.util.Collections;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
  * @author Rodrigo
  */
-public class Cinemex <P> {
+public class Sala {
     ArrayList <Pelicula> peliculas = new ArrayList();
-    
-    public Cinemex (){
+    int numero;
+
+    public Sala(int numero) {
+        this.numero = numero;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
     
-    public boolean addPelicula (String nombre,int asistentes){
-        return addPelicula(new Pelicula(nombre,asistentes));
+    public boolean addPelicula (String nombre){
+        return addPelicula(new Pelicula(nombre));
     }
     public boolean addPelicula (Pelicula nombre){
         if (findPelicula(nombre.getNombre())== -1) {
@@ -48,12 +50,14 @@ public class Cinemex <P> {
     
     String mostViewed(){
         Collections.sort(peliculas);
-        System.out.println("La pelicula mas vista en esta sala fue:");
         return peliculas.get(0).getNombre();
     }
 
-    
-    
-    
-    
+    int Fetch(String name) {
+        for(int i=0;i<peliculas.size();i++){
+            if(peliculas.get(i).getNombre()==name)return i; 
+        }
+        return -1; 
 }
+}
+
