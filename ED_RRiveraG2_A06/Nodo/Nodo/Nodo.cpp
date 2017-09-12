@@ -1,5 +1,6 @@
-#include "Nodo.h"
-
-Nodo::Nodo()
+Nodo::Nodo(int n)
 {
+	this->dato = n;
+	this->siguiente = nullptr;
+
 }
