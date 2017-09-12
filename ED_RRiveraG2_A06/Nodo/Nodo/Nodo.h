@@ -1,10 +1,9 @@
-#include <iostream>
 #pragma once
 
 class Nodo
 {
 public:
-	Nodo();
+	Nodo(int n);
 	int dato;
 	Nodo *siguiente;
 };
