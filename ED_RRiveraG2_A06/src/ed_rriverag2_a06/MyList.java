@@ -5,11 +5,12 @@
  */
 package ed_rriverag2_a06;
 
+
 /**
  *
  * @author Rodrigo
  */
-public class MyList {
+public class MyList <T> {
     Node first;
     Node last;
     Node pointer;
@@ -18,13 +19,13 @@ public class MyList {
         first = last = pointer = null;
     }
 
-    public MyList(int data) {
+    public MyList(T data) {
         Node node = new Node(data);
         first = last = node;
         node.next = null;
     }
     
-    void insertFirst(int n){
+    void insertFirst(T n){
         Node node = new Node(n);
         if (isEmpty()){ //Lista vacia
             first = last = node;
@@ -35,7 +36,7 @@ public class MyList {
             
         }
     }
-    void insertLast(int n){
+    void insertLast(T n){
         Node node = new Node(n);
         if (isEmpty()){ //Lista vacia
             first = last = node;
@@ -61,7 +62,7 @@ public class MyList {
                 first = last = null;
             } else { //Si la lista tiene mas de un elemento
                 pointer = first;
-                while (pointer.next!=last){ //Recorremos el arreglo hasta que pointer.next es last
+                while (pointer.next!=last){ //Recorremos el arreglo y se detiene cuando pointer.next es last
                  pointer = pointer.next;   
                 }
                 last = pointer;
@@ -70,10 +71,55 @@ public class MyList {
         }
     }
     
-    void deleteNode(int n){
+    public boolean deleteNode(T n){
+        Node p = fetchBack(n);
+        if (p!=null){
+            if (fetchBack(n)==n){ //Si el valor se el unico elemento o el primero en la lista
+                deleteFirst();
+            } else { //Si no es el unico elemento o el primero en la lista
+                p.next = p.next.next;
+            }
+            return true;
+        }  
+        return false;
+    }
+    
+    public Node fetch(T n){
+        if(!isEmpty()) {
+            if (first.data == n) return first;
+            Node temp = fetchBack(n);
+            if (temp != null) {
+                return temp.next;
+            }
+        } return null;
+    }
 
-    }   
-
+    public Node fetchBack(T n){
+        pointer = first;
+        if (!isEmpty()){
+            if(first==last){ //Si la lista tiene un solo elemento
+                if (first.data == n){ //revisa si es el elemento buscado
+                    return first; //regresa a si mismo
+                } else {
+                    return null;
+                }
+            } else {
+                if (first.data == n){ //revisa si el primer elemento tiene el dato que buscamos
+                    return first;
+                } else {
+                    while (pointer.next!=null){ //Recorremos el arreglo y se detiene si pointer.next es nulo
+                        if (pointer.next.data == n){ //revisa si el siguiente elemento contiene el elemento que buscamos
+                            return pointer;
+                        }
+                        pointer = pointer.next;
+                    }
+                    return null;
+                }
+            }
+        }
+        return null;
+    }
+    
     void showNode(){
 
     }
@@ -83,4 +129,3 @@ public class MyList {
     }   
     
 }
-
