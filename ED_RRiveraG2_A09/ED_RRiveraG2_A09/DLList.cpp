@@ -18,7 +18,7 @@ public:
 	}
 
 	DLList(T d) { //Constructor con un primer nodo
-		NodeDL<T> node = new NodeDL<T>(d);
+		NodeDL<T>* node = new NodeDL<T>(d);
 		//Apuntamos primero y ultimo al nuevo nodo
 		*first = node;
 		*last = node;
@@ -38,36 +38,35 @@ public:
 	//Insertar al Inicio
 	//Escenarios: Lista vacia o Lista con elementos
 	void insertFirst(T d) {
-		NodeDL<T> node = new NodeDL<T>(d);
+		NodeDL<T>* node = new NodeDL<T>(d);
 		if (isEmpty()) { //Lista vacia?
-			*first = node;
-			*last = node;
+			first = last = node;
 		} else { //Mas de un elemento en la lista
 			//El siguiente del nuevo nodo apunta al nodo apuntado por first
-			node.next* = first;
-			//El nodo que apunta firsy en su apuntador back apunta al nuevo nodo
-			first->back = first;
+			node->next = first;
+			//El nodo que apunta first en su apuntador back apunta al nuevo nodo
+			first->back = node;
 			//el apuntador first apunta al nuevo nodo
-			*first = node;
+			first = node;
 		}
 		length++:
 	}
 
 	void inserLast(T d) {
-		NodeDL<T> node = new NodeDL<T>(d);
+		NodeDL<T>* node = new NodeDL<T>(d);
 		if (isEmpty()) {
-			*first = node;
-			*last = node;
+			first = last = node;
 		} else {
-			node.back = last;
+			node->back = last;
 			last->next = node;
-			*last = node;
+			last = node;
 		}
-		length--;
+		length++;
 	}
+
 	void deleteFirst() {
 		if (!isEmpty()) {
-			if (*first->next = NULL) {
+			if (first->next = NULL) {
 				first = last = NULL;
 			} else {
 				*first = first->next;
@@ -82,7 +81,7 @@ public:
 			if (first == last) {
 				first = last = NULL;
 			} else {
-				*last = last->back;
+				last = last->back;
 				last->next = NULL;
 			}
 			length--;
@@ -108,9 +107,13 @@ public:
 					deleteFirst();
 					length--;
 					return true;
-				}
-				else {
-					while (pointer->next != NULL) { //Recorremos el arreglo y se detiene si pointer.next es nulo
+				} 
+				if (last->data == d) {
+					deleteLast();
+					length--;
+					return true;
+				} else {
+					while (pointer2->next != NULL) { //Recorremos el arreglo y se detiene si pointer.next es nulo
 						if (pointer->next.data == d) { //revisa si el siguiente elemento contiene el elemento que buscamos
 							pointer->next = pointer->next->next;
 							pointer2->back = pointer2->back->back;
