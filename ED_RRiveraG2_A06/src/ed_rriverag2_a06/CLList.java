@@ -47,10 +47,12 @@ public class CLList <T> {
             for (int i=0;i<=length;i++){
                 if (pivot.data == d){
                     pivot = pivot.next;
+                    length--;
                     i = length+1;
                 } 
                 if (pointer.next.data == d){    
                     pointer.next = pointer.next.next;
+                    length--;
                     i = length+1;
                 }
                 pointer = pointer.next;
@@ -70,7 +72,7 @@ public class CLList <T> {
     public void showList(){
         pointer = pivot;
         System.out.print("first->");
-        for (int i=0;i<length;i++){
+        for (int i=0;i<=length;i++){
             System.out.print("["+pointer.data.toString()+"]->");
             pointer=pointer.next;
         }
