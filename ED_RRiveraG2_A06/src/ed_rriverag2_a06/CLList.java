@@ -20,6 +20,12 @@ public class CLList <T> {
         length++;
     }
 
+    public CLList() {
+    pivot = null;
+    pointer = null;
+    length = 0;    
+    }
+
     //add a new node at the start of the linked list
     public void insertNode(T d){
         Node node = new Node(d);
@@ -29,6 +35,7 @@ public class CLList <T> {
         } else {
             node.next = pivot.next;
             pivot.next = node;
+            length++;
         }
     }
 
@@ -67,6 +74,6 @@ public class CLList <T> {
             System.out.print("["+pointer.data.toString()+"]->");
             pointer=pointer.next;
         }
-        System.out.println("<-last");
+        System.out.println("<-first");
     }
 }
