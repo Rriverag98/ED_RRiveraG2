@@ -33,7 +33,7 @@ public class ED_RRiveraG2_T02 {
            a = a.replace(".", "");
            a = a.replace("´", "");
            a = a.replace("-", "");
-           a = a.replace("", "");
+           a = a.replace(";", "");
            stack.push(a.charAt(i));
         }
         
