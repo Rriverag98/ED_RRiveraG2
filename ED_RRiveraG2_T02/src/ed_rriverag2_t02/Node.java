@@ -13,7 +13,18 @@ public class Node <T> {
     T data;
     Node next;
 
-    public Node(T data) {
-        this.data = data;
+    public Node(){
+        next= null;
+    }
+    public Node(T d){
+        next=null;
+        data = d;
+    }
+    
+    public void print(){
+        System.out.println(data + "->");
+    }
+    public void printS(){
+        System.out.println(data + "\n ↓");
     }  
 }
