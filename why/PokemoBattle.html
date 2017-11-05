@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="col">
+			<select id="selectPkmn1" >
+				<option value="char">Charmander</option>
+				<option value="squi">Squirtle</option>
+				<option value="bulb">Bulbasaur</option>
+				<option value="sand">Sandshrew</option>
+			</select>
+			<img id="img1" src="">
+			<button id="select1" onClick="choosePkmn1()">Choose Pokemon</button>
+		</div>
+		<div class="col2">
+			<select id="selectPkmn2" >
+				<option value="char">Charmander</option>
+				<option value="squi">Squirtle</option>
+				<option value="bulb">Bulbasaur</option>
+				<option value="sand">Sandshrew</option>
+			</select>
+			<img id="img2" src="">
+			<button id="select2" onClick="choosePkmn2()">Choose Pokemon</button>
+		</div>
+		<div class="col3">
+			<button id="select3" onClick="pkmnBattle()">Pokemon Battle</button>
+		</div>
+	</body>
+	<style>
+		.col{
+			float: left;
+			background-color: brown;
+			width: 300px;
+			height: 300px;
+		}
+		.col2{
+			float: right;
+			background-color:cyan;
+			width: 300px;
+			height: 300px; 
+		}
+		.col3{
+			width: 50px;
+			margin: 0 auto;
+		}
+	</style>
+</html>
+<script src="app.js">
+</script>
