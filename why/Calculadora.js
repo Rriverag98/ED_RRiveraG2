@@ -102,6 +102,7 @@ function calcAlimento(){
 		respuesta.style.textAlign = "center";
 		return document.getElementById("div1").appendChild(respuesta); 
 	} else if (document.getElementById('age_chart').value == "2") {
+		var peso = document.getElementById("txt").value;
 		var resultado = peso * 0.06;
 		var n = resultado.toFixed(2);
 		respuesta = document.createElement('div');
@@ -111,23 +112,24 @@ function calcAlimento(){
 		respuesta.style.textAlign = "center";
 		return document.getElementById("div1").appendChild(respuesta);
 	} else if (document.getElementById('age_chart').value == "3") {
+		var peso = document.getElementById("txt").value;
 		var resultado = peso * 0.05;
 		var n = resultado.toFixed(2);
 		respuesta = document.createElement('div');
-		respuesta.appendChild(document.createTextNode(`El cachorro debe comer ` + n + ` tazas`));
+		respuesta.appendChild(document.createTextNode(`El joven debe comer ` + n + ` tazas`));
 		respuesta.style.color = "yellow";
 		respuesta.style.fontsize = "number";
 		respuesta.style.textAlign = "center";
 		return document.getElementById("div1").appendChild(respuesta);
 	} else {
+		var peso = document.getElementById("txt").value;
 		var resultado = peso * 0.03;
 		var n = resultado.toFixed(2);
 		respuesta = document.createElement('div');
-		respuesta.appendChild(document.createTextNode(`El cachorro debe comer ` + n + ` tazas`));
+		respuesta.appendChild(document.createTextNode(`El adulto debe comer ` + n + ` tazas`));
 		respuesta.style.color = "yellow";
 		respuesta.style.fontsize = "number";
 		respuesta.style.textAlign = "center";
 		return document.getElementById("div1").appendChild(respuesta);
 	}
 }
-
