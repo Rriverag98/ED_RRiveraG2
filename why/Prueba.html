@@ -5,15 +5,16 @@
 		<title>Document</title>
 	</head>
 	<body bgcolor="#FF384B">
-		<div id="wrapperHeader">
+		<div align="center" id="wrapperHeader">
 			<div id="header">
-			<td> <img src="banneramarillo.jpeg" height="200" width="570"> </td>
+			<td> <img align="left" src="banneramarillo.jpeg" height="200" width="570"> </td>
 			<td> <img src="profilerojo.jpeg" heigth="200" width="200"> </td>
 			<td> <img align="right" src="banneramarillo.jpeg" height="200" width="570"> </td>
 			</div>
 		</div>
 		<font color="yellow" face="verdana" size="number"><p align=left>Selecciona la raza de tu mascota</p>
 		</font>
+		<button id="choo" onClick="chooseBreed()" >Escoger Raza</button>
 	<div class="col1">
 	<form name="breed" action=" ">
 	<select id ="change_chart">
@@ -29,33 +30,43 @@
 	<img id="img1" src="">
 	</form>
 	</div>
+	<div class="col2"">
 		<font color="yellow" face="verdana" size="number"><p align="center">Selecciona la edad de tu mascota</p>
 		</font>
-	<div align="center">
+	<center>
 	<select id="age_chart">
 		<option value="1" selected>Cachorro 0-3 meses </option>
 		<option value="2"> Cachorro 4-6 meses </option>
 		<option value="3"> Jóven 7-11 meses </option>
 		<option value="4"> Adulto 1 año en adelante</option>
 	</select>
-	</div>
-		<font color="yellow" face="verdana" size="number"><p align="center">Ingresa el peso en kg de tu mascota</p>
+</center>
+	<font color="yellow" face="verdana" size="number"><p align="center">Ingresa el peso en kg de tu mascota</p>
 		</font>
 		<center>
 		<form name="box">
 		<input type="text" name="textie" id="txt">
 	</form>
+	<p></p>
+	<button id="calc" onClick="calcAlimento()">Calcular</button>
+	<div id="div1"></div>
+	</div>
 	</center>
-		<center>
-		<button id="choo" onClick="chooseBreed()">Escoger Raza</button>
-		<button id="calc" onClick="calcAlimento()">Calcular</button>
-		</center>
 </body>
 	<style>
 		.col1{
 			float: left;
 			width: 200px;
 			height: 200px;
+		}
+		.col2{
+			position: absolute;
+  			width: 300px;
+  			height: 200px;
+  			z-index: 15;
+  			top: 50%;
+  			left: 50%;
+  			margin: -100px 0 0 -150px;
 		}
 	</style>
 </html>
