@@ -6,42 +6,32 @@ using UnityEngine;
 public class Hacker : MonoBehaviour {
     const string menuHint = "You can tyoe menu at any time.";
     #region Class Attributes
-    //Class Attributes
-    //These arrays will hold the passwords for each level
     string[] passwordLevel1 = { "book", "class", "teacher", "room", "hour" };
     string[] passwordLevel2 = { "cashier", "department", "payment", "electronics" };
     string[] passwordLevel3 = { "dossier", "international", "security" };
-    //enumerated tipe to represent the different states, variable is declared to hold the 
-    //current game state
     string input;
     int level;
     enum GameState { MainMenu, Password, Win };
     GameState currentScreen = GameState.MainMenu;
     string password;
-
-    //This variable will receive the users input
     #endregion
-    // Use this for initialization
     void Start () { 
         showMainMenu();
     }
 
     private void onUserInput(string input)
     {
-        //if user inputs menu then main menu is shown
         if (input == "menu") {
             showMainMenu();
-        } else if (input == "quit" || input == "close") { // if user inputs quit or closed 
-            Terminal.WriteLine("Please close the browser´s tab"); //the game will end
+        } else if (input == "quit" || input == "close") { 
+            Terminal.WriteLine("Please close the browser´s tab");
             Application.Quit();
         }
-        //if the user inputs something different to menu,quit or close, the input will be
-        //handled depending the gamestate
+        
         if (currentScreen == GameState.MainMenu)
         {
             runMainMenu(input);
         }
-        //if GameState is password, then we must call checkPassword()
         else if (currentScreen == GameState.Password)
         {
             CheckPassword(input);
@@ -82,15 +72,12 @@ public class Hacker : MonoBehaviour {
     }
 
     private void runMainMenu(string input)
-    {   //Validate that input is valid
         bool isValidInput = (input == "1") || (input == "2") || (input == "3");
-        //If it is then we convert the input into an int and assign it to level
-        //and call askForPassword();
         if (isValidInput)
         {
             level = int.Parse(input);
             askForPassword();
-        } else if (input == "007") //if the input is invalid, check if its an easter egg
+        } else if (input == "007") 
         {
             Terminal.WriteLine("Please enter a valid level, Mr.Bond");
         } else
@@ -101,14 +88,11 @@ public class Hacker : MonoBehaviour {
     }
 
     private void askForPassword()
-    {   //set currentScreen as GameState password
+    { 
         currentScreen = GameState.Password;
-        //Clear Screen
         Terminal.ClearScreen();
-        //Call setRandomPassord to set a password
         setRandomPassword();
         Terminal.WriteLine("Enter your password. Hint:" + password.Anagram());
-        //show menuHint
         Terminal.WriteLine(menuHint);
     }
 
@@ -144,8 +128,6 @@ public class Hacker : MonoBehaviour {
         currentScreen = GameState.MainMenu;
     }
 
-
-    // Update is called once per frame
     void Update () {
 		
 	}
